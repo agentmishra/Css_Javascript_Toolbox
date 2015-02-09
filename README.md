@@ -18,4 +18,10 @@ as always the installtion steps is :
 
 4 - enjoy the free content .
 
- 
+1.6.0
+-fix language difinition error in updating file.
+-fix include multiple files in on controller.
+-fix preselect page/controller in edit page.
+1.5.1
+-cleanup code .
+-offcial release .

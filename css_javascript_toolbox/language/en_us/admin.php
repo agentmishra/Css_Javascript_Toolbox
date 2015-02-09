@@ -12,6 +12,7 @@ $lang['CssJavascriptToolbox.!success.js_added'] = "Custom JS has been Successful
 $lang['CssJavascriptToolbox.!success.php_added'] = "Custom PHP has been Successfully Added to %1\$s ";
 $lang['CssJavascriptToolbox.!success.html_added'] = "Custom HTML has been Successfully Added to %1\$s ";
 $lang['CssJavascriptToolbox.!success.delete_file'] = "The file %1\$s  has ben successfully deleted .";
+$lang['CssJavascriptToolbox.!success.update_file'] = "The file %1\$s  has ben successfully updated . ";
 $lang['CssJavascriptToolbox.!error.delete_file'] = "there is no file exist with the name  %1\$s  .";
 
 

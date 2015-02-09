@@ -293,7 +293,7 @@ class AdminManagePlugin extends AppController {
 			}
 			else {
 				// Success
-				$this->parent->flashMessage("message", Language::_("CssJavascriptToolbox.!success.js_added", true , $this->Html->ifSet($this->post['section'])));
+				$this->parent->flashMessage("message", Language::_("CssJavascriptToolbox.!success.update_file", true , $this->Html->ifSet($this->post['section'])));
 				$this->redirect($this->base_uri . "settings/company/plugins/manage/" . $this->plugin_id . "/");
 			}
 		}	

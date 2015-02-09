@@ -78,10 +78,10 @@ class Toolbox extends CssJavascriptToolboxModel {
 								$action = "_" . strtolower($value) ;
 								
 								if ($controller == "admin_main" AND $action == "_index")
-									$controller_name["admin"] = Language::_("CssJavascriptToolboxPlugin.root.admin_dashboard", true) ;
+									$controller_name[$controller] = Language::_("CssJavascriptToolboxPlugin.root.admin_dashboard", true) ;
 									
 								else if ($controller == "client_main" AND $action == "_index")
-									$controller_name["client"] = Language::_("CssJavascriptToolboxPlugin.root.client_dashboard", true) ;
+									$controller_name[$controller] = Language::_("CssJavascriptToolboxPlugin.root.client_dashboard", true) ;
 									
 								else if ($action == "_index")
 									$controller_name[$controller] = $controller ;
@@ -233,11 +233,18 @@ class Toolbox extends CssJavascriptToolboxModel {
 		$file = array() ;
 		
 		if (file_exists($this->dir . $vars)) {
+		
+			if (strpos($vars,'.all.') OR  strpos($vars,'.client_area.') OR  strpos($vars,'.admin_area.') ) {
+				$file['type'] = "basic";
+			} else {
+				$file['type'] = "advanced";
+			}		
 	
 			$file['section'] = strstr($vars, '.', true) ;
 			$file['ext'] = pathinfo($vars, PATHINFO_EXTENSION);  
 			$file['name'] = $vars ;
 			$file['body'] = file_get_contents($this->dir . $vars);
+			$file['pages'] = substr(strrchr(basename($vars, ".".$file['ext']), '.'), 1) ;
 			$file['controllers'] = substr(strrchr(basename($vars, ".".$file['ext']), '.'), 1)  ; // $file['type']; 
 		}
 		
@@ -249,8 +256,7 @@ class Toolbox extends CssJavascriptToolboxModel {
 	 */	
 	public function editFile($vars , $file_name) {
 	
-		$ext  = pathinfo($file_name, PATHINFO_EXTENSION); 
-		// $old_file = $file_name ;
+		$ext  = pathinfo($file_name, PATHINFO_EXTENSION); 		
 		
 		if ($vars['type'] == "basic") 
 			$new_file = $vars['section'] .".". $vars['pages'] . "." . $ext;

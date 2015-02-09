@@ -116,9 +116,9 @@ class CssJavascriptToolboxPlugin extends Plugin {
 			
 		$controller =  $params['controller'] ;
 		
-		$extention = array (".css", ".js" ,".html" , ".php");
+		$extention = array (".html", ".js" ,".css" , ".php");
 		
-
+		// print_r($controller . $action ); 
 			
         // Set return val if not set
         if (!isset($return['head']))
@@ -133,51 +133,51 @@ class CssJavascriptToolboxPlugin extends Plugin {
 				
 		foreach ($extention as $ext) {				
 			if (file_exists($file_name = $this->upload_path . "head.all" . $ext ))
-				$return['head']['toolbox.head.all']= $this->Toolbox->ShowContent($file_name , $ext);
+				$return['head']['toolbox.head.all'.$ext]= $this->Toolbox->ShowContent($file_name , $ext);
 			
 			if (file_exists($file_name = $this->upload_path . "body_start.all" . $ext ))
-				$return['body_start'] ['toolbox.body_start.all']= $this->Toolbox->ShowContent($file_name , $ext);
+				$return['body_start'] ['toolbox.body_start.all'.$ext]= $this->Toolbox->ShowContent($file_name , $ext);
 			
 			if (file_exists($file_name = $this->upload_path . "body_end.all" . $ext ))
-				$return['body_end'] ['toolbox.body_end.all']= $this->Toolbox->ShowContent($file_name , $ext);
+				$return['body_end'] ['toolbox.body_end.all'.$ext]= $this->Toolbox->ShowContent($file_name , $ext);
 		}
 			
         if ($params['portal'] == "client") {
 			foreach ($extention as $ext) {				
 				if (file_exists($file_name = $this->upload_path . "head.client_area" . $ext ))
-					$return['head'] ['toolbox.head.client_area']= $this->Toolbox->ShowContent($file_name , $ext);
+					$return['head']['toolbox.head.client_area'.$ext]= $this->Toolbox->ShowContent($file_name , $ext);
 				
 				if (file_exists($file_name = $this->upload_path . "body_start.client_area" . $ext ))
-					$return['body_start'] ['toolbox.body_start.client_area']= $this->Toolbox->ShowContent($file_name , $ext);
+					$return['body_start'] ['toolbox.body_start.client_area'.$ext] = $this->Toolbox->ShowContent($file_name , $ext);
 				
 				if (file_exists($file_name = $this->upload_path . "body_end.client_area" . $ext ))
-					$return['body_end'] ['toolbox.body_end.client_area']= $this->Toolbox->ShowContent($file_name , $ext);
+					$return['body_end'] ['toolbox.body_end.client_area'.$ext]= $this->Toolbox->ShowContent($file_name , $ext);
 			}
 		}
 		
         if ($params['portal'] == "admin") {
 			foreach ($extention as $ext) {				
 				if (file_exists($file_name = $this->upload_path . "head.admin_area" . $ext ))
-					$return['head'] ['toolbox.all.admin_area']= $this->Toolbox->ShowContent($file_name , $ext);
+					$return['head'] ['toolbox.all.admin_area'.$ext]= $this->Toolbox->ShowContent($file_name , $ext);
 				
 				if (file_exists($file_name = $this->upload_path . "body_start.admin_area" . $ext ))
-					$return['body_start'] ['toolbox.body_start.admin_area']= $this->Toolbox->ShowContent($file_name , $ext);
+					$return['body_start'] ['toolbox.body_start.admin_area'.$ext]= $this->Toolbox->ShowContent($file_name , $ext);
 				
 				if (file_exists($file_name = $this->upload_path . "body_end.admin_area" . $ext ))
-					$return['body_end'] ['toolbox.body_end.admin_area']= $this->Toolbox->ShowContent($file_name , $ext);
+					$return['body_end'] ['toolbox.body_end.admin_area'.$ext]= $this->Toolbox->ShowContent($file_name , $ext);
 			}
 		}				
 		
 		foreach ($extention as $ext) {
 			
 			if (file_exists($file_name = $this->upload_path . "head.". $controller . $action . $ext ))
-				$return['head']['toolbox.all.' . $controller . $action]= $this->Toolbox->ShowContent($file_name , $ext);
+				$return['head']['toolbox.all.' . $controller . $action . $ext ]= $this->Toolbox->ShowContent($file_name , $ext);
 			
 			if (file_exists($file_name = $this->upload_path . "body_start.". $controller . $action . $ext ))
-				$return['body_start'] ['toolbox.body_start.' . $controller . $action]= $this->Toolbox->ShowContent($file_name , $ext);
+				$return['body_start'] ['toolbox.body_start.' . $controller . $action . $ext] = $this->Toolbox->ShowContent($file_name , $ext);
 			
 			if (file_exists($file_name = $this->upload_path . "body_end.". $controller . $action . $ext ))
-				$return['body_end'] ['toolbox.body_end.' . $controller . $action]= $this->Toolbox->ShowContent($file_name , $ext);
+				$return['body_end'] ['toolbox.body_end.' . $controller . $action . $ext]= $this->Toolbox->ShowContent($file_name , $ext);
 		}
 		$event->setReturnVal($return);		
 	}
